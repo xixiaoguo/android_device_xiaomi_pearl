@@ -7,6 +7,9 @@
 # Inherit from mt6895-common
 $(call inherit-product, device/xiaomi/mt6895-common/mt6895.mk)
 
+# Display
+$(call soong_config_set_bool,surfaceflinger,register_displayservice,true)
+
 # MIUI Camera
 $(call inherit-product, vendor/xiaomi/miuicamera-pearl/device.mk)
 
