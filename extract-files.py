@@ -162,6 +162,12 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v31.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
 
+    ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
+        .replace_needed('libformatter.so', 'libformatter_mtk.so'),
+
+    ('vendor/lib/libcodec2_mtk_vdec.so', 'vendor/lib/libcodec2_mtk_venc.so'): blob_fixup()
+        .replace_needed('libformatter.so', 'libformatter_mtk.so'),
+
     'vendor/lib64/mt6895/libmtkcam_hal_android_app_cbadaptor.so': blob_fixup()
         .replace_needed('android.frameworks.displayservice@1.0.so',
                         'lineage.frameworks.displayservice@1.0.so')
