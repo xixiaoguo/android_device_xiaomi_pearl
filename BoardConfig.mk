@@ -45,4 +45,24 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 
 # Inherit the proprietary files
 include vendor/xiaomi/pearl/BoardConfigVendor.mk
+
+# MIUI Camera
 include vendor/xiaomi/miuicamera-pearl/BoardConfig.mk
+
+# pearl: AVB 用自己的 releasekey 
+
+# 主 vbmeta
+BOARD_AVB_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_KEY_PATH := android-certs/releasekey.pem
+
+# recovery / vendor_boot
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_RECOVERY_KEY_PATH := android-certs/releasekey.pem
+
+# vbmeta_system
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := android-certs/releasekey.pem
+
+# vbmeta_vendor
+BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_VENDOR_KEY_PATH := android-certs/releasekey.pem
