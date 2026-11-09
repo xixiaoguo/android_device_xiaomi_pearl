@@ -5,7 +5,7 @@
     "branch": "lineage-24.0"
   },
   {
-    "repository": "Xiaomi-MT6896-OSS/android_vendor_xiaomi_pearl",
+    "repository": "xixiaoguo/android_vendor_xiaomi_pearl",
     "target_path": "vendor/xiaomi/pearl",
     "branch": "lineage-24.0"
   },
@@ -15,7 +15,7 @@
     "branch": "lineage-24.0"
   },
   {
-    "repository": "xixiaoguo/android_kernel_xiaomi_mt6895",
+    "repository": "Xiaomi-MT6896-OSS/android_kernel_xiaomi_mt6895",
     "target_path": "kernel/xiaomi/mt6895",
     "branch": "lineage-24.0"
   },
