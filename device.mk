@@ -7,11 +7,12 @@
 # Inherit from mt6895-common
 $(call inherit-product, device/xiaomi/mt6895-common/mt6895.mk)
 
-# Display
-$(call soong_config_set_bool,surfaceflinger,register_displayservice,true)
-
-# MIUI Camera
 $(call inherit-product, vendor/xiaomi/miuicamera-pearl/device.mk)
+
+define add-radio-file-sha1-checked
+  $(call add-radio-file,$(1))
+endef
+
 
 # Audio (device-specific effect config)
 PRODUCT_COPY_FILES += \
@@ -65,21 +66,19 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/com.android.nfc_extras.xml \
         frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/com.nxp.mifare.xml
 
-# Overlays
+# Overlays (命名与优先级对齐 PixelOS peridot / 现行 Lineage 设备树约定)
 PRODUCT_PACKAGES += \
-    FrameworksResOverlayPearl \
+    CustomSettingsOverlayPearl \
+    FrameworkOverlayPearl \
     NfcOverlayPearl \
+    SettingsOverlayPearl \
     SettingsProviderOverlayPearl \
-    SystemUIResOverlayPearl \
-    WifiResOverlayPearl
+    SystemUIOverlayPearl \
+    WifiOverlayPearl
 
 # Parts
 PRODUCT_PACKAGES += \
     XiaomiParts
-
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePkgs
 
 # Radio
 PRODUCT_COPY_FILES += \
@@ -106,14 +105,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../../../vendor/xiaomi/pearl/proprietary/vendor/firmware/novatek_ts_mp02.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/firmware/novatek_ts_mp02.bin
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/pearl/pearl-vendor.mk)
-PRODUCT_DEFAULT_DEV_CERTIFICATE := .android-certs/releasekey
+$(call inherit-product, device/xiaomi/pearl/android-certs/pearl-vendor.mk)
+
+PRODUCT_DEFAULT_DEV_CERTIFICATE := android-certs/releasekey
 
 # Use the device keys for the Bluetooth sepolicy context so the Bluetooth
 # certificate in mac_permissions.xml matches the one used to sign the
 # Bluetooth APK. Otherwise com.android.bluetooth gets the default seinfo
 # and zygote fails to set its SELinux context, breaking Bluetooth.
-PRODUCT_MAINLINE_BLUETOOTH_SEPOLICY_DEV_CERTIFICATES := .android-certs/
+PRODUCT_MAINLINE_BLUETOOTH_SEPOLICY_DEV_CERTIFICATES := android-certs/
 
 
 # use pearl-specific OS3 c2store (disable the shared/default one for pearl only)
