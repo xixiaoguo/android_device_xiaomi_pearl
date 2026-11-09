@@ -20,7 +20,7 @@
     "branch": "lineage-24.0"
   },
   {
-    "repository": "xixiaoguo/android_hardware_mediatek",
+    "repository": "Xiaomi-MT6896-OSS/android_hardware_mediatek",
     "target_path": "hardware/mediatek",
     "branch": "lineage-24.0"
   },
