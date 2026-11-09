@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2022 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+  -->
+
+<resources>
+    <!-- 统一使用 Android 16 (Material 3 Expressive) 的 Settings 子页面主题。 -->
+    <style name="Theme.XiaomiParts" parent="@style/Theme.SubSettingsBase.Expressive">
+        <!-- 边到边显示，系统栏交给 CollapsingToolbarBaseActivity 处理 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- 分组标题：对应 Android 16 Settings 里的 section header -->
+    <style name="TextAppearance.XiaomiParts.SectionHeader"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">?android:attr/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+</resources>

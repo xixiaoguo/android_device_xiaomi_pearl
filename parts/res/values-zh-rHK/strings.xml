@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020-2022 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Xiaomi Parts -->
+    <string name="app_name">小米組件</string>
+
+    <!-- Thermal Profiles -->
+    <string name="thermal_title">溫控設定</string>
+    <string name="thermal_enable">使用溫控設定</string>
+    <string name="thermal_enable_summary">根據目前使用的應用程式自動套用溫控設定</string>
+    <string name="thermal_summary">依應用程式設定溫控模式</string>
+    <string name="thermal_loading">正在載入…</string>
+    <string name="thermal_default">預設</string>
+    <string name="thermal_benchmark">跑分</string>
+    <string name="thermal_browser">瀏覽器</string>
+    <string name="thermal_camera">相機</string>
+    <string name="thermal_dialer">電話</string>
+    <string name="thermal_gaming">遊戲</string>
+    <string name="thermal_navigation">導航</string>
+    <string name="thermal_streaming">串流</string>
+    <string name="thermal_video">影片</string>
+    <string name="thermal_reset">重設為預設值</string>
+    <string name="thermal_reset_message">確定要將所有應用程式的溫控設定重設為預設值嗎？</string>
+
+    <!-- Per-app refresh rate -->
+    <string name="refresh_title">依應用程式設定螢幕更新率</string>
+    <string name="refresh_summary">為特定應用程式設定最高螢幕更新率</string>
+    <string name="refresh_loading">正在載入應用程式…</string>
+    <string name="refresh_default">預設</string>
+    <string name="refresh_low">30Hz</string>
+    <string name="refresh_standard">60Hz</string>
+    <string name="refresh_medium">90Hz</string>
+    <string name="refresh_high">120Hz</string>
+    <string name="refresh_extreme">144Hz</string>
+
+    <!-- Gestures -->
+    <string name="gestures_title">裝置專屬手勢</string>
+    <string name="gestures_summary_back_tap">背面輕觸</string>
+    <string name="gestures_footer_text">背面輕觸手勢僅在螢幕開啟時可用。
+                   如果你的裝置裝有保護殼，可能無法完美運作。</string>
+    <string name="back_double_tap_title">輕觸手機背面兩下以</string>
+    <string name="back_triple_tap_title">輕觸手機背面三下以</string>
+    <string name="action_off">不執行任何操作</string>
+    <string name="action_screenshot">螢幕截圖</string>
+    <string name="action_assistant">存取你的數位助理</string>
+    <string name="action_play_pause">播放或暫停媒體</string>
+    <string name="action_notifications">展開通知面板</string>
+    <string name="action_camera">開啟相機</string>
+    <string name="action_flashlight">切換手電筒</string>
+    <string name="action_mute">切換鈴聲模式（靜音）</string>
+    <string name="action_vibrate">切換鈴聲模式（震動）</string>
+    <string name="action_volume">顯示音量面板</string>
+    <string name="action_sleep">關閉螢幕</string>
+    <string name="gesture_unavailable">裝置不支援</string>
+    <string name="gestures_intro">輕觸手機背面即可觸發一個動作。你可以分別設定輕觸兩下和三下要做什麼。</string>
+    <string name="gestures_section">動作</string>
+    <string name="gesture_action_title">動作</string>
+
+    <!-- Common -->
+    <string name="unknown">未知</string>
+    <string name="apps_section">應用程式</string>
+
+
+    <!-- Front camera cutout mask -->
+    <string name="cutout_mask_title">前鏡頭挖孔遮罩</string>
+    <string name="cutout_mask_summary">前鏡頭使用時壓暗挖孔周圍的像素</string>
+    <string name="cutout_mask_enable_title">前鏡頭時遮蓋挖孔</string>
+    <string name="cutout_mask_enable_summary">僅在相機開啟時把挖孔周圍像素塗黑，可減少夜景下的光暈與霧狀反光。</string>
+    <string name="cutout_mask_footer">遮罩是一個只在相機使用期間存在的懸浮視窗，桌面與其他應用程式裡不會出現。會封鎖懸浮視窗的應用程式看不到它；關閉開關後這個視窗完全不存在。</string>
+
+</resources>
