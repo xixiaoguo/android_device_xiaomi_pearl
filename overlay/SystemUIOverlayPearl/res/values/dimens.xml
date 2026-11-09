@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2023 The LineageOS Project
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The end padding for the clock in the status bar. -->
+    <dimen name="status_bar_clock_end_padding">6dp</dimen>
+
+    <!-- Don't need the left side padding due to being inset from the cutout -->
+    <dimen name="status_bar_padding_start">0dp</dimen>
+
+    <!-- the padding on the top of the statusbar (usually 0) -->
+    <dimen name="status_bar_padding_top">25.0px</dimen>
+
+    <!-- Default paddings for content around the corners. -->
+    <dimen name="rounded_corner_content_padding">40.0px</dimen>
+
+    <!-- Location on the screen of the center of the fingerprint sensor. For devices with under
+     display fingerprint sensors, this directly corresponds to the fingerprint sensor's location.
+     For devices with sensors on the back of the device, this corresponds to the location on the
+     screen directly in front of the sensor.
+     By default, this is set to @null to use the horizontal center of the screen. -->
+    <dimen name="physical_fingerprint_sensor_center_screen_location_x">1080px</dimen>
+
+    <!-- Location on the screen of the center of the fingerprint sensor. For devices with under
+     display fingerprint sensors, this directly corresponds to the fingerprint sensor's location.
+     For devices with sensors on the back of the device, this corresponds to the location on the
+     screen directly in front of the sensor. -->
+    <dimen name="physical_fingerprint_sensor_center_screen_location_y">@dimen/physical_power_button_center_screen_location_y</dimen>
+
+    <!-- Location on the screen of the center of the physical power button. This is a reasonable
+    default that should be overridden by device-specific overlays. -->
+    <dimen name="physical_power_button_center_screen_location_y">1060px</dimen>
+
+    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
+         relies on this value will not be sized correctly.
+         pearl 面板 1080x2460、6.6 英寸：sqrt(1080^2 + 2460^2) = 2686.6 px 对角线，
+         167640 um / 2686.6 px = 62.4 um/px。
+         （peridot 的 56.96 用同一算法可复现：1220x2712、6.67 英寸。） -->
+    <item name="pixel_pitch" type="dimen" format="float">62.4</item>
+</resources>

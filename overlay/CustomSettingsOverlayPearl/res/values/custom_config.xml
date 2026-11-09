@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- pearl 没有屏下指纹，显式保持 ROM 的现代 UDFPS 录入 UI 设置（PixelOS 默认即 false）。
+         不要照抄 peridot 的 config_useLegacyUdfpsUi=true。 -->
+    <bool name="config_useLegacyUdfpsUi">false</bool>
+
+    <!-- Show battery cycle count.
+         实机核对：health HAL（HIDL 2.1，MTK 实现）的 getHealthInfo 里带
+         .batteryCycleCount = 1004，内核节点 /sys/class/power_supply/battery/cycle_count
+         同样可读，所以这个入口可以开。 -->
+    <bool name="config_show_battery_cycle_count">true</bool>
+</resources>

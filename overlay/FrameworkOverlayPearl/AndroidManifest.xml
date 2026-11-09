@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2023 The LineageOS Project
+
+  SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.overlay.pearl">
+
+    <application android:hasCode="false" />
+    <!-- priority 必须高于 ROM 自带的 FrameworkOverlayCustom（vendor/custom，priority 2），
+         否则同名资源会被 ROM 的 overlay 盖掉。peridot 用的是 100。 -->
+    <overlay
+      android:targetPackage="android"
+      android:isStatic="true"
+      android:priority="100"/>
+</manifest>

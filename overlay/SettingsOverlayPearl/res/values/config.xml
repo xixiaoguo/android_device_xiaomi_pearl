@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The LineageOS Project
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Whether to show Smooth Display feature in Settings Options.
+         pearl 是 144Hz 面板，保留这个开关。 -->
+    <bool name="config_show_smooth_display">true</bool>
+
+    <!-- Max network scan search time in seconds -->
+    <integer name="config_network_scan_helper_max_search_time_sec">254</integer>
+
+    <!-- The number of vibration intensity levels supported by the device (1/2/3).
+         实机核对：vibrator_manager 的 VibratorInfo 报 AMPLITUDE_CONTROL，
+         defaultVibrationAmplitude=255；触感日志里 haptic_feedback_config_strength
+         出现 0.375 / 0.625 / 1.0 三档振幅，故取 3。
+         若实机感觉 弱/中/强 区分不明显，改回 2。 -->
+    <integer name="config_vibration_supported_intensity_levels">3</integer>
+
+    <!-- 注意：不要照抄 peridot 的 config_udfpsEnrollProgressBar。
+         pearl 是侧键指纹，没有屏下指纹的录入进度圈需要调尺寸。 -->
+</resources>
