@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../../../vendor/xiaomi/pearl/proprietary/vendor/firmware/novatek_ts_mp02.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/firmware/novatek_ts_mp02.bin
 
 # Inherit the proprietary files
-$(call inherit-product, device/xiaomi/pearl/android-certs/pearl-vendor.mk)
+$(call inherit-product, vendor/xiaomi/pearl/pearl-vendor.mk)
 
 PRODUCT_DEFAULT_DEV_CERTIFICATE := android-certs/releasekey
 
