@@ -54,7 +54,16 @@ class GestureSettingsFragment : PreferenceFragmentCompat(), Preference.OnPrefere
     ): View = inflater.inflate(R.layout.gesture_layout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // 注意：这里**故意不调用** super.onViewCreated()。
+        //
+        // PreferenceFragmentCompat.onViewCreated() 会调用 bindPreferences()，
+        // 后者对内部 RecyclerView 成员 mList 调用 setAdapter()。由于我们重写了
+        // onCreateView() 返回的是不含 @android:id/list_container 的自定义布局，
+        // 框架从未初始化 mList，调用 super 会直接 NPE。
+        //
+        // 本页不使用原生 Preference 列表，所以跳过 super 是安全且正确的；
+        // onCreatePreferences() 仍由框架在更早的生命周期回调中调用，
+        // findPreference() 拿到的 ListPreference 依旧可用。
 
         val isAvailable = GestureUtils.isBackTapAvailable(requireContext())
         dlog(TAG, "onViewCreated: backTapAvailable=$isAvailable")
