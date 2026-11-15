@@ -5,7 +5,8 @@
 # 只做三件事：
 #
 #   1  sync   按 <设备树>/custom.dependencies 拉取全部依赖仓库
-#             （并重贴 patches/files 里的本地文件覆盖，依赖每次都会被 reset 到上游）
+#             （并重贴 patches/files 里的本地文件覆盖，依赖每次都会被 reset 到上游；
+#              顺带把 android-certs/ 加进 release-keys 的密钥路径白名单）
 #   2  tools  体检编包所需的包，缺哪些就列出来（只提示，不安装）
 #   3  hint   打印编译命令
 #
@@ -324,6 +325,59 @@ overlay_patch_files() {
   return 0
 }
 
+# ── 把 release-keys 的密钥路径白名单换成 android-certs/ ─────────────────────
+# AOSP/Lineage 的 BUILD_KEYS 判断只认「密钥目录以 vendor/lineage-priv/ 开头」，
+# 我们把钥匙放在 <源码根>/android-certs/，所以直接把白名单里的前缀换掉：
+#
+#   BUILD_KEYS := release-keys   ← 只有命中白名单时才是这个
+#   ro.build.tags                 ← 由它推导（config.mk + gen_build_prop.py 两处）
+#
+# 两处都要改：config.mk 决定 make 侧的 BUILD_VERSION_TAGS，
+# gen_build_prop.py 决定 soong 侧的 BuildKeys，漏一处会得到 dev-keys,release-keys。
+# build/make、build/soong 都受 repo 管理，单独 repo sync 可能被上游覆盖，重跑本脚本即可。
+patch_release_keys_prefix() {
+  local cm="$SRC/build/make/core/config.mk"
+  local gp="$SRC/build/soong/scripts/gen_build_prop.py"
+  local patched=0
+
+  info "==> 打 release-keys 密钥路径白名单（android-certs/）"
+
+  if [ ! -f "$cm" ]; then
+    warn "找不到 build/make/core/config.mk，跳过"
+  elif grep -q 'android-certs/%' "$cm"; then
+    ok "config.mk 已认 android-certs/（跳过）"
+  elif grep -q '\$(filter vendor/lineage-priv/%' "$cm"; then
+    sed -i 's#\$(filter vendor/lineage-priv/%#$(filter android-certs/%#' "$cm"
+    if grep -q 'android-certs/%' "$cm"; then
+      ok "config.mk: BUILD_KEYS 白名单已加入 android-certs/"
+      patched=$((patched+1))
+    else
+      bad "config.mk 打补丁失败（判断写法可能变了），请手动检查"
+    fi
+  else
+    warn "config.mk 里没找到 vendor/lineage-priv/% 判断，跳过"
+  fi
+
+  if [ ! -f "$gp" ]; then
+    warn "找不到 build/soong/scripts/gen_build_prop.py，跳过"
+  elif grep -q 'android-certs/' "$gp"; then
+    ok "gen_build_prop.py 已认 android-certs/（跳过）"
+  elif grep -q 'default_cert.startswith("vendor/lineage-priv/")' "$gp"; then
+    sed -i 's#default_cert.startswith("vendor/lineage-priv/")#default_cert.startswith("android-certs/")#' "$gp"
+    if grep -q 'android-certs/' "$gp"; then
+      ok "gen_build_prop.py: ro.build.tags 也会是 release-keys"
+      patched=$((patched+1))
+    else
+      bad "gen_build_prop.py 打补丁失败（判断写法可能变了），请手动检查"
+    fi
+  else
+    warn "gen_build_prop.py 里没找到 vendor/lineage-priv/ 判断，跳过"
+  fi
+
+  [ "$patched" -gt 0 ] && note "已改动 $patched 处；两个文件都受 repo 管理，重新 sync 后可重跑本脚本"
+  return 0
+}
+
 do_sync() {
   step "步骤 1/2 拉取依赖仓库"
 
@@ -369,6 +423,7 @@ do_sync() {
 
   write_local_manifest
   overlay_patch_files || orc=1
+  patch_release_keys_prefix
 
   # 汇总表
   say ""
