@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020-2022 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- Xiaomi Parts -->
+    <string name="app_name">Xiaomi Parts</string>
+
+    <!-- Thermal Profiles -->
+    <string name="thermal_title">Thermal profiles</string>
+    <string name="thermal_enable">Use thermal profiles</string>
+    <string name="thermal_enable_summary">Automatically apply a profile based on the app in use</string>
+    <string name="thermal_summary">Per-app thermal profile configuration</string>
+    <string name="thermal_loading">Loading…</string>
+    <string name="thermal_default">Default</string>
+    <string name="thermal_benchmark">Benchmark</string>
+    <string name="thermal_browser">Browser</string>
+    <string name="thermal_camera">Camera</string>
+    <string name="thermal_dialer">Dialer</string>
+    <string name="thermal_gaming">Gaming</string>
+    <string name="thermal_navigation">Navigation</string>
+    <string name="thermal_streaming">Streaming</string>
+    <string name="thermal_video">Video</string>
+    <string name="thermal_reset">Reset to defaults</string>
+    <string name="thermal_reset_message">Are you sure you want to reset thermal profile for all apps?</string>
+
+    <!-- Per-app refresh rate -->
+    <string name="refresh_title">Per-app refresh rate</string>
+    <string name="refresh_summary">Set the maximum refresh rate for a specific application</string>
+    <string name="refresh_loading">Loading apps…</string>
+    <string name="refresh_default">Default</string>
+    <string name="refresh_low">30Hz</string>
+    <string name="refresh_standard">60Hz</string>
+    <string name="refresh_medium">90Hz</string>
+    <string name="refresh_high">120Hz</string>
+    <string name="refresh_extreme">144Hz</string>
+
+
+     <!-- Common -->
+     <string name="unknown">Unknown</string>
+     <string name="apps_section">Apps</string>
+
+    <!-- Front camera cutout mask -->
+    <string name="cutout_mask_title">Front camera cutout mask</string>
+    <string name="cutout_mask_summary">Darken the pixels around the punch hole while the front camera is in use</string>
+    <string name="cutout_mask_enable_title">Mask the punch hole for the front camera</string>
+    <string name="cutout_mask_enable_summary">Blacks out the pixels around the punch hole, only while the camera is open. Reduces glow and veiling flare in night shots.</string>
+    <string name="cutout_mask_footer">The mask is an overlay window that only exists while the camera is in use, never on the home screen or in other apps. Applications that suppress overlay windows do not see it, and switching this off removes the window entirely.</string>
+
+</resources>
